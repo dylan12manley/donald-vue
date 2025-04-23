@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue';
+import BreadMaker from './BreadMaker.vue';
 
 defineProps({
   msg: String,
 });
 
 const count = ref(0);
+
+const showBreadMaker = ref(false);
 
 function getWeekNumber(date) {
   const start = new Date(date.getFullYear(), 0, 1);
@@ -30,26 +33,20 @@ const daysUntilOffWork = () => {
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>Donald's App</h1>
 
-  <div class="card">
+  <!-- <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
     {{ daysUntilOffWork() }}
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the official Vue + Vite starter
-  </p>
-  <p>
-    Learn more about IDE Support for Vue in the
-    <a href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support" target="_blank">Vue Docs Scaling up Guide</a>.
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  </div> -->
+  <h2>{{ daysUntilOffWork() }}</h2>
+  <button type="button" @click="showBreadMaker = !showBreadMaker">{{ showBreadMaker ? 'Hide' : 'Show' }} Bread Maker</button>
+  <BreadMaker v-if="showBreadMaker" />
+  <!-- <img src="./assets/bread-maker.jpg" alt="Bread Maker" /> -->
 </template>
 
 <style scoped>
