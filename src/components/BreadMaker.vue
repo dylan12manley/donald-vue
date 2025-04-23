@@ -194,6 +194,9 @@ const onChangeProduce = (event) => {
   selectedProduce = selectedKey;
   const selectedRecipe = recipies[selectedKey];
   console.log(selectedProduce);
+  if (selectedProduce.length > 0) {
+    console.log(`Selected produce: ${selectedProduce}`);
+  }
 };
 </script>
 
@@ -207,7 +210,8 @@ const onChangeProduce = (event) => {
     <option value="banana">Banana</option>
   </select>
 
-  <div v-if="selectedProduce.length > 0">
+  <div>
+    {{ recipies[selectedProduce]?.name }}
     <p>Produce has been selected</p>
   </div>
 </template>
