@@ -191,6 +191,6 @@ const recipies = {
 <template>
   <div>
     {{ recipies[selectedProduce]?.name }}
-    <!-- <p>Produce has been selected</p> -->
+    <p>Produce has been selected</p>
   </div>
 </template>

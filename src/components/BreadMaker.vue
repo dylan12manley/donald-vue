@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, getCurrentInstance } from 'vue';
 import Recipe from './Recipe.vue';
 
 let selectedProduce = ref('');
@@ -196,6 +196,9 @@ const onChangeProduce = (event) => {
   const selectedKey = event.target.value;
   console.log(selectedKey);
   selectedProduce = selectedKey;
+  //   const instance = getCurrentInstance();
+  //   instance.proxy.forceUpdate();
+
   const selectedRecipe = recipies[selectedKey];
   console.log(selectedProduce);
   if (selectedProduce.length > 0) {
@@ -213,9 +216,5 @@ const onChangeProduce = (event) => {
     <option value="bnut-squash">Butternut Squash</option>
     <option value="banana">Banana</option>
   </select>
-
-  <div v-if="selectedProduce" :key="recipies[selectedProduce].id">
-    {{ recipies[selectedProduce]?.name }}
-    <!-- <p>Produce has been selected</p> -->
-  </div>
+  <Recipe v-if="selectedProduce" :recipe="recipies[selectedProduce]" />
 </template>
