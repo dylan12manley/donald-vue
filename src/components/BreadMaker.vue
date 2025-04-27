@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import Recipe from './Recipe.vue';
 
 let selectedProduce = ref('');
 const recipies = {
@@ -74,6 +75,7 @@ const recipies = {
         rating: '4.8/5',
       },
     ],
+    id: 1,
   },
   banana: {
     name: 'Banana',
@@ -108,6 +110,7 @@ const recipies = {
         rating: '4.7/5',
       },
     ],
+    id: 2,
   },
   'bnut-squash': {
     name: 'Butternut Squash',
@@ -185,6 +188,7 @@ const recipies = {
         rating: '4.4/5',
       },
     ],
+    id: 3,
   },
 };
 
@@ -210,8 +214,8 @@ const onChangeProduce = (event) => {
     <option value="banana">Banana</option>
   </select>
 
-  <div>
+  <div v-if="selectedProduce" :key="recipies[selectedProduce].id">
     {{ recipies[selectedProduce]?.name }}
-    <p>Produce has been selected</p>
+    <!-- <p>Produce has been selected</p> -->
   </div>
 </template>
